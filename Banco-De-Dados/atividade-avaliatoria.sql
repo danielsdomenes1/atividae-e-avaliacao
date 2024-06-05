@@ -134,4 +134,34 @@ INNER JOIN dentista
 ON dentista.coddentista = paciente.codpaciente
 
 
+SELECT COUNT(codDentista) AS 'Dentistas Registrados', especialidade FROM dentista
+GROUP BY especialidade
+
+
+SELECT COUNT(codConsulta) AS quantidade_consultas
+FROM consulta
+WHERE datahora like '2024-07%'
+
+
+
+SELECT tipoconsulta, COUNT(codConsulta) AS quantidade
+FROM consulta
+GROUP BY tipoconsulta;
+
+
+
+ 
+SELECT COUNT(codPaciente) AS NumeroDePaciente
+FROM paciente;
+
+
+SELECT dentista.nome AS NomeDentista, dentista.CRO, consulta.datahora, paciente.nome AS NomePaciente
+FROM consulta
+JOIN dentista ON consulta.codDentista = dentista.codDentista
+JOIN paciente ON consulta.codPaciente = paciente.codPaciente
+WHERE dentista.especialidade = 'implantodontia'
+ORDER BY consulta.datahora DESC;
+
+
+
 
